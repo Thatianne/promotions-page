@@ -8,9 +8,9 @@
 import Menu from '~/components/Menu'
 
 export default {
-	components: [
+	components: {
 		Menu
-	]
+	}
 }
 </script>
 

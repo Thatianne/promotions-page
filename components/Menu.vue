@@ -1,13 +1,13 @@
 <template>
 	<div>
-		<nuxt-link>
+		<nuxt-link to="/">
 			<Logo />
 		</nuxt-link>
 		<div>
-			<nuxt-link to="">
+			<nuxt-link to="/login">
 				Entrar
 			</nuxt-link>
-			<nuxt-link to="">
+			<nuxt-link to="/sign-in">
 				Criar conta
 			</nuxt-link>
 		</div>
@@ -16,7 +16,7 @@
 
 <script>
 
-import Logo from '~/components/Logo.vue'
+import Logo from '~/components/Logo'
 
 export default {
 	components: {
