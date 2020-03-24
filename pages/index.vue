@@ -1,6 +1,6 @@
 <template>
 	<div :class="$style.container">
-		teste
+		{{ $t('test') }}
 	</div>
 </template>
 
