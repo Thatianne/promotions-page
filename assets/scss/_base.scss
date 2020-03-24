@@ -5,3 +5,46 @@ body {
 	margin: 0;
 	padding: 0;
 }
+
+* {
+	font-family: $font-stack;
+	box-sizing: border-box;
+	color: $gray-dark;
+}
+
+.f-between {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.f-col-between {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+h1 {
+	font-size: $font-xl;
+	margin: 8px 0;
+}
+
+h2 {
+	font-size: $font-xl;
+	margin: 8px 0;
+}
+
+h3 {
+	font-size: $font-md;
+}
+
+h4 {
+	font-size: $font-sm;
+}
+
+p {
+	font-size: $font-md;
+	margin: 0;
+}
