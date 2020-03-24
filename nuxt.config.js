@@ -23,6 +23,7 @@ module.exports = {
   ** Global CSS
   */
 	css: [
+		'~/assets/scss/_base.scss'
 	],
 	/*
   ** Plugins to load before mounting the App
@@ -52,9 +53,9 @@ module.exports = {
 		extend (config, ctx) {
 			if (ctx.isDev && ctx.isClient) {
 				config.module.rules.push({
-					enforce: "pre",
+					enforce: 'pre',
 					test: /\.(js|vue)$/,
-					loader: "eslint-loader",
+					loader: 'eslint-loader',
 					exclude: /(node_modules)/
 				})
 			}

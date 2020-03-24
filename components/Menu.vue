@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div :class="$style.menu">
 		<nuxt-link to="/">
 			<Logo />
 		</nuxt-link>
@@ -28,5 +28,8 @@ export default {
 </script>
 
 <style lang="scss" module>
-
+.menu {
+	height: 64px;
+	display: flex;
+}
 </style>
