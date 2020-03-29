@@ -1,7 +1,7 @@
 <template>
 	<div class="f-between">
+		<Picture src="google-play_3" />
 		<Picture src="download-on-the-app-store" />
-		<Picture src="google-play" />
 	</div>
 </template>
 

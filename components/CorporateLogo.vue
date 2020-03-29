@@ -9,7 +9,7 @@
 <script>
 import Picture from '~/components/Picture'
 
-const types = ['default', 'danger', 'warning', 'primary', 'info']
+// const types = ['default', 'danger', 'warning', 'primary', 'info']
 
 export default {
 	components: {
@@ -18,15 +18,15 @@ export default {
 	props: {
 		type: {
 			type: String,
-			default: types[0]
+			default: 'light'
 		}
 	},
 	computed: {
 		classes () {
-			return [
-				this.$style.box,
-				this.$style[this.type]
-			]
+			// debugger
+			const classes = [this.$style.box]
+			classes.push(this.$style[this.type])
+			return classes
 		}
 	}
 }
@@ -45,7 +45,7 @@ export default {
 		width: 100%;
 	}
 
-	&.default {
+	&.light {
 		background-color: $white;
 	}
 	&.danger {

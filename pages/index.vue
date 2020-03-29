@@ -2,7 +2,7 @@
 	<div :class="$style.container">
 		<div
 			class="f-between"
-			:class="[$style.section, $style.firstSection]"
+			:class="[$style.section, $style.appSection]"
 		>
 			<div>
 				<h1>{{ $t('page-title') }}</h1>
@@ -16,18 +16,18 @@
 
 		<div
 			class="f-between"
-			:class="[$style.section, $style.secondSection]"
+			:class="[$style.section, $style.benefitsSection]"
 		>
-			<Box
+			<BenefitBox
 				:title="$t('benefits-title')"
 				:description="$t('benefits-description')"
 			/>
-			<Box
+			<BenefitBox
 				:title="$t('benefits-title')"
 				:description="$t('benefits-description')"
 				type="clock"
 			/>
-			<Box
+			<BenefitBox
 				:title="$t('benefits-title')"
 				:description="$t('benefits-description')"
 				type="bell"
@@ -36,7 +36,7 @@
 
 		<div
 			class="f-col-between"
-			:class="[$style.section, $style.thirdSection]"
+			:class="[$style.section, $style.videoSection]"
 		>
 			<h2>{{ $t('promotional-title') }}</h2>
 			<p>{{ $t('promotional-description') }}</p>
@@ -49,7 +49,7 @@
 		</div>
 		<div
 			class="f-col-between"
-			:class="[$style.section, $style.fourthSection]"
+			:class="[$style.section, $style.spotlightSection]"
 		>
 			<h2>{{ $t('spotlight-title') }}</h2>
 			<div
@@ -70,24 +70,28 @@
 					</div>
 				</div>
 				<div :class="$style.corporationsLogo">
-					<CorporateLogo type="primary" />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo type="danger" />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo type="info" />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo />
-					<CorporateLogo type="warning" />
+					<CorporateLogo
+						v-for="(corporate, index) in corporates"
+						:key="index"
+						:type="corporate"
+					/>
 				</div>
 			</div>
+		</div>
+		<div
+			class="f-between"
+			:class="[$style.section, $style.appSection]"
+		>
+			<Picture
+				:class="$style.appImage"
+				src="group-9" />
+			<div>
+				<h1>{{ $t('page-title') }}</h1>
+				<p>{{ $t('app-description') }}</p>
+				<DownloadApp :class="$style.downloadApp" />
+			</div>
+		</div>
+		<div :class="[$style.section, $style.mostAccessedSection]">
 		</div>
 	</div>
 </template>
@@ -95,15 +99,37 @@
 <script>
 import Picture from '~/components/Picture'
 import DownloadApp from '~/components/DownloadApp'
-import Box from '~/components/Box'
+import BenefitBox from '~/components/BenefitBox'
 import CorporateLogo from '~/components/CorporateLogo'
 
 export default {
 	components: {
 		Picture,
 		DownloadApp,
-		Box,
+		BenefitBox,
 		CorporateLogo
+	},
+	data () {
+		return {
+			corporates: [
+				'primary',
+				'light',
+				'light',
+				'light',
+				'light',
+				'danger',
+				'light',
+				'light',
+				'light',
+				'light',
+				'info',
+				'light',
+				'light',
+				'light',
+				'light	',
+				'warning'
+			]
+		}
 	}
 }
 </script>
@@ -116,7 +142,7 @@ export default {
 .section {
 	padding: 80px 110px;
 
-	&.firstSection {
+	&.appSection {
 
 		h1 {
 			font-size: $font-xl;
@@ -136,19 +162,20 @@ export default {
 		}
 	}
 
-	&.secondSection {
+	&.benefitsSection {
 		background-color: $green2-light;
 	}
 
-	&.thirdSection {
+	&.videoSection {
 		padding: 100px 240px;
 
 		p {
 			text-align: center;
+			margin: 30px 0;
 		}
 	}
 
-	&.fourthSection {
+	&.spotlightSection {
 
 		.sectionBody {
 			margin-top: 40px;
