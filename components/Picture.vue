@@ -10,16 +10,20 @@ export default {
 		src: {
 			type: String,
 			default: ''
+		},
+		extension: {
+			type: String,
+			default: 'png'
 		}
 	},
 	computed: {
 		source () {
 			if (this.$device.isMobile) {
-				return `/img/${this.src}.png`
+				return `/img/${this.src}.${this.extension}`
 			} else if (this.$device.isTablet) {
-				return `/img/${this.src}@2x.png`
+				return `/img/${this.src}@2x.${this.extension}`
 			} else {
-				return `/img/${this.src}@3x.png`
+				return `/img/${this.src}@3x.${this.extension}`
 			}
 		}
 	}

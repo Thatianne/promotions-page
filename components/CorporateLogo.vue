@@ -23,7 +23,6 @@ export default {
 	},
 	computed: {
 		classes () {
-			// debugger
 			const classes = [this.$style.box]
 			classes.push(this.$style[this.type])
 			return classes

@@ -92,6 +92,11 @@
 			</div>
 		</div>
 		<div :class="[$style.section, $style.mostAccessedSection]">
+			<ProductAccess
+				v-for="(product, index) in mostAccessedProducts"
+				:key="index"
+				v-bind="product"
+			/>
 		</div>
 	</div>
 </template>
@@ -101,13 +106,15 @@ import Picture from '~/components/Picture'
 import DownloadApp from '~/components/DownloadApp'
 import BenefitBox from '~/components/BenefitBox'
 import CorporateLogo from '~/components/CorporateLogo'
+import ProductAccess from '~/components/ProductAccess'
 
 export default {
 	components: {
 		Picture,
 		DownloadApp,
 		BenefitBox,
-		CorporateLogo
+		CorporateLogo,
+		ProductAccess
 	},
 	data () {
 		return {
@@ -128,6 +135,26 @@ export default {
 				'light',
 				'light	',
 				'warning'
+			],
+			mostAccessedProducts: [
+				{
+					picture: 'cadeira',
+					title: 'Cadeira para escritório',
+					seller: 'Magazine Luíza',
+					price: 450
+				},
+				{
+					picture: 'monitor',
+					title: 'Monitor DELL',
+					seller: 'Lojas Americanas',
+					price: 1.609
+				},
+				{
+					picture: 'monitor-lg',
+					title: 'Monitor LG',
+					seller: 'Magazine Luíza',
+					price: 1.525
+				}
 			]
 		}
 	}
