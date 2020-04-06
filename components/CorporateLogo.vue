@@ -33,8 +33,8 @@ export default {
 
 <style lang="scss" module>
 .box {
-	width: 80px;
-	height: 85px;
+	width: 85px;
+	height: 90px;
 	padding: 12px 16px;
 	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
 	border-radius: 6px;

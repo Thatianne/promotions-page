@@ -1,12 +1,14 @@
 {
 	"login": "Entrar",
 	"page-title": "Título da página",
-	"app-description": "Informação curta e direta sobreo app divulgado na página com foco nas funcionalidades.",
+	"app-description": "Informação curta e direta sobre o app divulgado na página com foco nas funcionalidades.",
 	"benefits-title": "Título",
 	"benefits-description": "Texto corrido com informações que vão ser preenchidas depois que a página estiver pronta.",
 	"promotional-title": "Vídeo promocional do app",
 	"promotional-description": "O vídeo mostratodas as funcionalidades e você vai conferir como funciona e ver como é fácil e simples de usar o app, falando do uso e seus benefícios.",
 	"spotlight-title": "Marcas do app em destaque",
 	"spotlight-sub-title": "Título",
-	"spotlight-description": "Marcação de texto para ser preenchido depois da página ficar pronta, enquanto isso segue com o texto marcando a página"
+	"spotlight-description": "Marcação de texto para ser preenchido depois da página ficar pronta, enquanto isso segue com o texto marcando a página",
+	"most-accessed-title": "Produtos mais acessados",
+	"see-all": "Ver todos"
 }

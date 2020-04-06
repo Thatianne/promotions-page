@@ -42,7 +42,7 @@
 			<p>{{ $t('promotional-description') }}</p>
 			<iframe
 				width="100%"
-				height="450"
+				height="415"
 				style="border: none"
 				src="https://www.youtube.com/embed/18rXCx8jSeg">
 			</iframe>
@@ -84,7 +84,7 @@
 		>
 			<Picture
 				:class="$style.appImage"
-				src="group-9" />
+				src="group-11" />
 			<div>
 				<h1>{{ $t('page-title') }}</h1>
 				<p>{{ $t('app-description') }}</p>
@@ -92,11 +92,24 @@
 			</div>
 		</div>
 		<div :class="[$style.section, $style.mostAccessedSection]">
-			<ProductAccess
-				v-for="(product, index) in mostAccessedProducts"
-				:key="index"
-				v-bind="product"
-			/>
+			<div
+				class="f-between"
+				:class="$style.title">
+				<h3>{{ $t('most-accessed-title') }}</h3>
+				<a
+					:class="$style.seeAll"
+					href="#"
+				>
+					{{ $t('see-all') }}
+				</a>
+			</div>
+			<Carousel>
+				<ProductAccess
+					v-for="(product, index) in mostAccessedProducts"
+					:key="index"
+					v-bind="product"
+				/>
+			</Carousel>
 		</div>
 	</div>
 </template>
@@ -107,6 +120,7 @@ import DownloadApp from '~/components/DownloadApp'
 import BenefitBox from '~/components/BenefitBox'
 import CorporateLogo from '~/components/CorporateLogo'
 import ProductAccess from '~/components/ProductAccess'
+import Carousel from '~/components/Carousel'
 
 export default {
 	components: {
@@ -114,7 +128,8 @@ export default {
 		DownloadApp,
 		BenefitBox,
 		CorporateLogo,
-		ProductAccess
+		ProductAccess,
+		Carousel
 	},
 	data () {
 		return {
@@ -141,13 +156,31 @@ export default {
 					picture: 'cadeira',
 					title: 'Cadeira para escritório',
 					seller: 'Magazine Luíza',
-					price: 450
+					price: 650
 				},
 				{
 					picture: 'monitor',
 					title: 'Monitor DELL',
 					seller: 'Lojas Americanas',
 					price: 1.609
+				},
+				{
+					picture: 'monitor',
+					title: 'Monitor DELL',
+					seller: 'Lojas Americanas',
+					price: 1.609
+				},
+				{
+					picture: 'monitor',
+					title: 'Monitor DELL',
+					seller: 'Lojas Americanas',
+					price: 1.609
+				},
+				{
+					picture: 'monitor-lg',
+					title: 'Monitor LG',
+					seller: 'Magazine Luíza',
+					price: 1.525
 				},
 				{
 					picture: 'monitor-lg',
@@ -167,24 +200,26 @@ export default {
 }
 
 .section {
-	padding: 80px 110px;
+	padding: 80px;
 
 	&.appSection {
+		padding-top: 48px;
 
 		h1 {
-			font-size: $font-xl;
+			font-size: $font-xxl;
 		}
 
 		p {
-			font-size: $font-md;
-			max-width: 550px;
+			font-size: $font-sm;
+			max-width: 420px;
+			margin-top: 12px
 		}
 
 		.downloadApp {
-			margin: 40px 100px 0 0;
+			margin: 40px 40px 0 0;
 
 			img {
-				max-width: 150px;
+				height: 45px;
 			}
 		}
 	}
@@ -194,15 +229,18 @@ export default {
 	}
 
 	&.videoSection {
-		padding: 100px 240px;
+		padding: 96px 140px;
 
 		p {
 			text-align: center;
-			margin: 30px 0;
+			margin: 21px 0;
+			font-size: $font-sm;
 		}
 	}
 
 	&.spotlightSection {
+
+		padding-top: 0;
 
 		.sectionBody {
 			margin-top: 40px;
@@ -212,13 +250,12 @@ export default {
 		}
 
 		.corporations {
-			max-width: 500px;
+			max-width: 360px;
 			width: 100%;
 		}
 
 		.corporation {
 			padding: 8px 0 30px 0;
-			margin-right: 30px;
 
 			span {
 				font-size: $font-md;
@@ -236,15 +273,31 @@ export default {
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
-			width: 500px;
+			width: 436px;
 
 			[class*="CorporationLogo"] {
 					margin: 12px;
 				}
 		}
 	}
+
+	&.mostAccessedSection {
+		padding: 0 55px 80px;
+
+		.title {
+			margin: 24px 0;
+		}
+
+		.seeAll {
+			font-size: $font-xs;
+			color: $green2;
+			font-weight: 500;
+			margin-right: 80px;
+			text-decoration: none;
+		}
+	}
 }
 .appImage {
-	max-width: 400px;
+	max-width: 370px;
 }
 </style>

@@ -48,11 +48,11 @@ export default {
 
 <style lang="scss" module>
 .box {
-	width: 360px;
-	height: 360px;
+	width: 280px;
+	height: 250px;
 	background-color: $white;
 	border-radius: 6px;
-	padding: 90px 35px;
+	padding: 54px 29px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -61,6 +61,7 @@ export default {
 
 	p {
 		text-align: center;
+		font-size: $font-xs;
 	}
 	* {
 		margin: 0;

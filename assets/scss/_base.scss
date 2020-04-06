@@ -34,16 +34,20 @@ body {
 
 h1 {
 	font-size: $font-xl;
-	margin: 8px 0;
+	margin: 0;
+	// margin: 12px 0;
 }
 
 h2 {
 	font-size: $font-xl;
-	margin: 8px 0;
+	margin: 0;
+	// margin: 8px 0;
 }
 
 h3 {
-	font-size: $font-md;
+	font-size: $font-lg;
+	font-weight: 500;
+	margin: 0;
 }
 
 h4 {

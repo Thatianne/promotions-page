@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="f-col-center"
+		class="f-col-center ProductAccess"
 		:class="$style.box"
 	>
 		<Picture
@@ -38,6 +38,10 @@ export default {
 		price: {
 			type: Number,
 			default: 0.00
+		},
+		access: {
+			type: Number,
+			default: 0
 		}
 	}
 }
@@ -45,11 +49,12 @@ export default {
 
 <style lang="scss" module>
 .box {
-	width: 210px;
-	height: 300px;
+	width: 215px;
+	height: 325px;
 	border-radius: 6px;
 	border: 1px solid $gray-light;
-	padding: 6px;
+	padding: 28px;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
 
 	[class*="Picture"] {
 		max-height: 150px;

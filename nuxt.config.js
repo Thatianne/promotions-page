@@ -41,8 +41,14 @@ module.exports = {
   */
 	modules: [
 		'@nuxtjs/device',
-		'@nuxtjs/style-resources'
+		'@nuxtjs/style-resources',
+		'nuxt-webfontloader'
 	],
+	webfontloader: {
+		google: {
+			families: ['Roboto:400,500,700']
+		}
+	},
 
 	styleResources: {
 		scss: [

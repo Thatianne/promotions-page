@@ -44,11 +44,11 @@ export default {
 
 <style lang="scss" module>
 .menu {
-	height: 100px;
+	height: 90px;
 	padding: 20px 60px;
 
 	.options {
-		font-size: $font-xs;
+		font-size: $font-xxs;
 		font-weight: bold;
 
 		.login {
@@ -65,6 +65,7 @@ export default {
 
 	a {
 		height: 100%;
+		width: initial;
 		text-decoration: none;
 	}
 }
