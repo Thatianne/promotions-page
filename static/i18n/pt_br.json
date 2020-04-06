@@ -10,5 +10,14 @@
 	"spotlight-sub-title": "Título",
 	"spotlight-description": "Marcação de texto para ser preenchido depois da página ficar pronta, enquanto isso segue com o texto marcando a página",
 	"most-accessed-title": "Produtos mais acessados",
-	"see-all": "Ver todos"
+	"see-all": "Ver todos",
+	"install-extension-title": "Instale a extensão no seu Google Chrome.",
+	"install-extension-description": "Texto de suporte do título",
+	"download-app-first": "Baixe nosso app",
+	"download-app-second": "e não fique de fora do que acontece no produto",
+	"about": "Sobre",
+	"who-we-are": "Quem somos",
+	"press": "Imprensa",
+	"work-with-us": "Trabalhe conosco",
+	"privacy-policy": "Política de privacidade"
 }

@@ -17,5 +17,6 @@ export default {
 <style lang="scss" module>
 .logo {
 	height: 100%;
+	width: initial;
 }
 </style>

@@ -71,7 +71,7 @@ export default {
 	.description {
 		color: $gray-light;
 		font-size: $font-xxs;
-		font-weight: 600;
+		font-weight: 500;
 		margin-top: 16px;
 
 		a {
@@ -81,8 +81,9 @@ export default {
 
 	.price {
 		font-size: $font-sm;
-		color: $blue;
+		color: $blue-dark;
 		margin-top: 8px;
+		font-weight: 600;
 	}
 }
 </style>

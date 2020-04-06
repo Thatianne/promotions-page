@@ -111,6 +111,7 @@
 				/>
 			</Carousel>
 		</div>
+		<Footer />
 	</div>
 </template>
 
@@ -121,6 +122,7 @@ import BenefitBox from '~/components/BenefitBox'
 import CorporateLogo from '~/components/CorporateLogo'
 import ProductAccess from '~/components/ProductAccess'
 import Carousel from '~/components/Carousel'
+import Footer from '~/components/Footer'
 
 export default {
 	components: {
@@ -129,7 +131,8 @@ export default {
 		BenefitBox,
 		CorporateLogo,
 		ProductAccess,
-		Carousel
+		Carousel,
+		Footer
 	},
 	data () {
 		return {
@@ -203,7 +206,7 @@ export default {
 	padding: 80px;
 
 	&.appSection {
-		padding-top: 48px;
+		// padding-top: 48px;
 
 		h1 {
 			font-size: $font-xxl;
@@ -225,7 +228,7 @@ export default {
 	}
 
 	&.benefitsSection {
-		background-color: $green2-light;
+		background-color: $green-whiter;
 	}
 
 	&.videoSection {
@@ -290,7 +293,7 @@ export default {
 
 		.seeAll {
 			font-size: $font-xs;
-			color: $green2;
+			color: $green-smooth;
 			font-weight: 500;
 			margin-right: 80px;
 			text-decoration: none;

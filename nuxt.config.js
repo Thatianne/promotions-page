@@ -46,7 +46,7 @@ module.exports = {
 	],
 	webfontloader: {
 		google: {
-			families: ['Roboto:400,500,700']
+			families: ['Roboto:400,500,600']
 		}
 	},
 
