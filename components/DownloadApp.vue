@@ -1,5 +1,7 @@
 <template>
-	<div class="f-between">
+	<div
+		:class="classes"
+		class="f-between DownloadApp">
 		<Picture src="google-play_3" />
 		<Picture src="download-on-the-app-store" />
 	</div>
@@ -11,6 +13,37 @@ import Picture from '~/components/Picture'
 export default {
 	components: {
 		Picture
+	},
+	props: {
+		size: {
+			type: String,
+			default: 'lg'
+		}
+	},
+	computed: {
+		classes () {
+			return [this.$style[this.size]]
+		}
 	}
 }
 </script>
+
+<style lang="scss" module>
+.lg {
+	img {
+		height: 45px;
+	}
+}
+
+.md {
+	img {
+		height: 32px;
+	}
+}
+
+.sm {
+	img {
+		height: 28px;
+	}
+}
+</style>

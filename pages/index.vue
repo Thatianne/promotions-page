@@ -7,7 +7,7 @@
 			<div>
 				<h1>{{ $t('page-title') }}</h1>
 				<p>{{ $t('app-description') }}</p>
-				<DownloadApp :class="$style.downloadApp" />
+				<DownloadApp />
 			</div>
 			<Picture
 				:class="$style.appImage"
@@ -88,7 +88,7 @@
 			<div>
 				<h1>{{ $t('page-title') }}</h1>
 				<p>{{ $t('app-description') }}</p>
-				<DownloadApp :class="$style.downloadApp" />
+				<DownloadApp />
 			</div>
 		</div>
 		<div :class="[$style.section, $style.mostAccessedSection]">
@@ -218,12 +218,8 @@ export default {
 			margin-top: 12px
 		}
 
-		.downloadApp {
+		[class*="DownloadApp"] {
 			margin: 40px 40px 0 0;
-
-			img {
-				height: 45px;
-			}
 		}
 	}
 

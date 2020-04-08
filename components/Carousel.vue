@@ -54,7 +54,7 @@ export default {
 		overflow: hidden;
 
 		> * {
-			margin: 0 8px;
+			margin: 0 6px;
 
 			&:first-child {
 				margin-left: 0;

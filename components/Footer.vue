@@ -11,10 +11,13 @@
 					<span>{{ $t('install-extension-description') }}</span>
 				</div>
 			</div>
-			<div :class="$style.app">
-				<div>
-					test
-				</div>
+			<div
+				:class="$style.app"
+				class="f-between">
+				<p>
+					<strong :class="$style.darkBold">{{ $t('download-app-first') }}</strong> {{ $t('download-app-second') }}
+				</p>
+				<DownloadApp size="md" />
 			</div>
 		</div>
 		<div :class="$style.info">
@@ -25,9 +28,12 @@
 
 <script>
 import Picture from '~/components/Picture'
+import DownloadApp from '~/components/DownloadApp'
+
 export default {
 	components: {
-		Picture
+		Picture,
+		DownloadApp
 	}
 }
 </script>
@@ -54,6 +60,19 @@ export default {
 			[class*="Picture"] {
 				width: 20px;
 				margin-right: 12px;
+			}
+		}
+
+		.app {
+			width: 430px;
+
+			p {
+				width: 210px;
+				font-size: $font-xs;
+			}
+
+			[class*="DownloadApp"] {
+				width: 215px;
 			}
 		}
 	}
