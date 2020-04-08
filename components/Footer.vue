@@ -164,6 +164,10 @@ export default {
 				color: $white;
 				text-decoration: none;
 				line-height: 22px;
+
+				&:hover {
+					color: $green-whiter;
+				}
 			}
 		}
 

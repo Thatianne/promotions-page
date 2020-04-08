@@ -159,37 +159,43 @@ export default {
 					picture: 'cadeira',
 					title: 'Cadeira para escritório',
 					seller: 'Magazine Luíza',
-					price: 650
+					price: 650,
+					access: 12
 				},
 				{
 					picture: 'monitor',
 					title: 'Monitor DELL',
 					seller: 'Lojas Americanas',
-					price: 1.609
+					price: 1.609,
+					access: 4
 				},
 				{
 					picture: 'monitor',
 					title: 'Monitor DELL',
 					seller: 'Lojas Americanas',
-					price: 1.609
+					price: 1.609,
+					access: -5
 				},
 				{
 					picture: 'monitor',
 					title: 'Monitor DELL',
 					seller: 'Lojas Americanas',
-					price: 1.609
+					price: 1.609,
+					access: 0
 				},
 				{
 					picture: 'monitor-lg',
 					title: 'Monitor LG',
 					seller: 'Magazine Luíza',
-					price: 1.525
+					price: 1.525,
+					access: 6
 				},
 				{
 					picture: 'monitor-lg',
 					title: 'Monitor LG',
 					seller: 'Magazine Luíza',
-					price: 1.525
+					price: 1.525,
+					access: 11
 				}
 			]
 		}
@@ -293,6 +299,10 @@ export default {
 			font-weight: 500;
 			margin-right: 80px;
 			text-decoration: none;
+
+			&:hover {
+				color: $green-smooth-dark;
+			}
 		}
 	}
 }

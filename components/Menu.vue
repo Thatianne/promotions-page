@@ -53,6 +53,7 @@ export default {
 	right: 0;
 	left: 0;
 	background-color: $white;
+	z-index: 3;
 	// box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
 
 	.options {
@@ -75,6 +76,10 @@ export default {
 		height: 100%;
 		width: initial;
 		text-decoration: none;
+
+		&:hover, > div:hover {
+			color: $green-smooth-dark;
+		}
 	}
 }
 </style>
