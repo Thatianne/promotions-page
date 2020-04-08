@@ -20,7 +20,7 @@ export default {
 			default: 'lg'
 		}
 	},
-	computed: {
+	computed: { // TODO use size to change picture src
 		classes () {
 			return [this.$style[this.size]]
 		}

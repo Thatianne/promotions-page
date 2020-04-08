@@ -1,5 +1,5 @@
 <template>
-	<div :class="$style.footer">
+	<footer :class="$style.footer">
 		<div
 			class="f-between"
 			:class="$style.install"
@@ -20,10 +20,49 @@
 				<DownloadApp size="md" />
 			</div>
 		</div>
-		<div :class="$style.info">
-			test
+		<div
+			:class="$style.info"
+			class="f-col-between"
+		>
+			<div
+				class="f-between"
+				style="width: 100%"
+			>
+				<section
+					v-for="(groupOption, index) in groupOptions"
+					:key="index"
+				>
+					<span :class="$style.whiteBold">{{ groupOption.title }}</span>
+					<nav :class="$style.navigator">
+						<a
+							v-for="(option, indexOp) in groupOption.options"
+							:key="indexOp"
+							:href="option.link"
+							:class="$style.link"
+						>
+							{{ option.text }}
+						</a>
+					</nav>
+				</section>
+				<section>
+					<span :class="$style.whiteBold">{{ $t('social') }}</span>
+					<div
+						:class="$style.socialLogos"
+						class="f-between"
+					>
+						<Picture src="path" />
+						<Picture src="path_2" />
+						<Picture src="combined-shape" />
+						<Picture src="shape" />
+					</div>
+				</section>
+			</div>
+			<p :class="$style.stores">
+				{{ $t('stores') }}
+				<strong>{{ $t('brand-not-listed') }}</strong>
+			</p>
 		</div>
-	</div>
+	</footer>
 </template>
 
 <script>
@@ -34,6 +73,38 @@ export default {
 	components: {
 		Picture,
 		DownloadApp
+	},
+	data () {
+		return {
+			groupOptions: [
+				{
+					title: this.$t('about'),
+					options: [
+						{ text: this.$t('who-we-are'), link: '#' },
+						{ text: this.$t('press'), link: '#' },
+						{ text: this.$t('work-with-us'), link: '#' },
+						{ text: this.$t('privacy-policy'), link: '#' }
+					]
+				},
+				{
+					title: this.$t('highlight'),
+					options: [
+						{ text: this.$t('black-friday'), link: '#' },
+						{ text: this.$t('black-night'), link: '#' },
+						{ text: this.$t('fathers-day'), link: '#' },
+						{ text: this.$t('valentines-day'), link: '#' }
+					]
+				},
+				{
+					title: this.$t('contact'),
+					options: [
+						{ text: this.$t('talk-with-us'), link: '#' },
+						{ text: this.$t('partnership'), link: '#' },
+						{ text: this.$t('questions'), link: '#' }
+					]
+				}
+			]
+		}
 	}
 }
 </script>
@@ -50,10 +121,10 @@ export default {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			width: 300px;
+			width: 280px;
 
 			span {
-				font-size: $font-xs;
+				font-size: $font-xxs;
 				color: $black;
 			}
 
@@ -64,28 +135,70 @@ export default {
 		}
 
 		.app {
-			width: 430px;
+			width: 400px;
 
 			p {
 				width: 210px;
-				font-size: $font-xs;
+				font-size: $font-xxs;
 			}
 
 			[class*="DownloadApp"] {
-				width: 215px;
+				width: 242px;
 			}
 		}
 	}
 
 	.info {
-		height: 225px;
+		height: 235px;
 		background-color: $green;
-		padding: 6px 80px;
+		padding: 28px 80px 12px;
+
+		.navigator {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			margin-top: 12px;
+
+			.link {
+				font-size: $font-xxs;
+				color: $white;
+				text-decoration: none;
+				line-height: 22px;
+			}
+		}
+
+		section {
+			height: 100%;
+		}
+
+		.socialLogos {
+			width: 200px;
+			margin-top: 35px;
+
+			[class*="Picture"] {
+				height: 25px;
+			}
+		}
+	}
+
+	.stores {
+		font-size: 11px;
+		color: $white;
+		line-height: 16px;
+
+		strong {
+			color: $white;
+		}
 	}
 
 	.darkBold {
-		font-size: $font-xs;
+		font-size: $font-xxs;
 		color: $black;
+		font-weight: 500;
+	}
+	.whiteBold {
+		font-size: $font-xs;
+		color: $white;
 		font-weight: 500;
 	}
 }
