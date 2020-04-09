@@ -1,0 +1,17 @@
+@protocol=http
+@host = localhost
+@port = 3000
+@baseUrl = {{protocol}}://{{host}}:{{port}}
+@contentType = application/json
+
+@name = Thati test
+@logo = https://avatars0.githubusercontent.com/u/14905849?s=460&u=7109932021274d7f3e45a8cdc1d845e90d4a1ed9&v=4
+@link = https://github.com/Thatianne
+POST {{{{baseUrl}}}}/stores
+Content-Type: {{contentType}}
+
+{
+	"name": {{name}},
+	"logo": {{logo}},
+	"link": {{link}}
+}

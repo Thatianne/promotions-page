@@ -2,9 +2,13 @@ const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
-
+const mongoose = require('mongoose')
+const cors = require('cors')
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')
+const routes = require('./routes')
+require('dotenv').config()
+
 config.dev = process.env.NODE_ENV !== 'production'
 
 async function start () {
@@ -20,8 +24,16 @@ async function start () {
 		await builder.build()
 	}
 
+	const dbUrl = process.env.DB_HOST.replace('{{password}}', process.env.DB_PASSWORD)
+	mongoose.connect(dbUrl, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	})
 	// Give nuxt middleware to express
 	app.use(nuxt.render)
+	app.use(cors())
+	app.use(express.json())
+	app.use(routes)
 
 	// Listen the server
 	app.listen(port, host)
