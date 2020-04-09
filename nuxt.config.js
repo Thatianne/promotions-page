@@ -55,7 +55,7 @@ module.exports = {
 			'assets/scss/_vars.scss',
 			'assets/scss/_base.scss'
 		]
-},
+	},
 	/*
   ** Build configuration
   */
