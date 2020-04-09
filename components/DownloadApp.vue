@@ -22,28 +22,39 @@ export default {
 	},
 	computed: { // TODO use size to change picture src
 		classes () {
-			return [this.$style[this.size]]
+			return [this.$style.downloadApp, this.$style[this.size]]
 		}
 	}
 }
 </script>
 
 <style lang="scss" module>
-.lg {
-	img {
-		height: 45px;
+.downloadApp {
+
+	[class*="Picture"] {
+		cursor: pointer;
+		&:hover {
+			box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+		}
+	}
+
+	&.lg {
+		img {
+			height: 45px;
+		}
+	}
+
+	&.md {
+		img {
+			height: 32px;
+		}
+	}
+
+	&.sm {
+		img {
+			height: 28px;
+		}
 	}
 }
 
-.md {
-	img {
-		height: 32px;
-	}
-}
-
-.sm {
-	img {
-		height: 28px;
-	}
-}
 </style>
