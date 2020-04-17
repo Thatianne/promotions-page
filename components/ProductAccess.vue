@@ -3,19 +3,20 @@
 		class="f-col-center ProductAccess"
 		:class="$style.box"
 	>
-		<div :class="tagClasses">
+		<div :class="badgeClasses">
 			<Picture :src="arrow" />
-			<span>$ {{ access }}</span>
+			<span>$ {{ badgeNumber }}</span>
 		</div>
 		<Picture
-			:src="picture"
-			extension="jpg"
+			:src="image"
+			external
+			:class="$style.product"
 		/>
 		<h3 :class="$style.title">
-			{{ title }}
+			{{ title | truncate(55) }}
 		</h3>
-		<span :class="$style.description">{{ $t('sold-by') }} <a>{{ seller }}</a></span>
-		<span :class="$style.price">R$ {{ price }}</span>
+		<span :class="$style.description">{{ $t('sold-by') }} <a>{{ store }}</a></span>
+		<span :class="$style.price">R$ {{ price.toFixed(2) }}</span>
 	</div>
 </template>
 
@@ -27,7 +28,7 @@ export default {
 		Picture
 	},
 	props: {
-		picture: {
+		image: {
 			type: String,
 			default: ''
 		},
@@ -35,7 +36,7 @@ export default {
 			type: String,
 			default: ''
 		},
-		seller: {
+		store: {
 			type: String,
 			default: ''
 		},
@@ -43,34 +44,40 @@ export default {
 			type: Number,
 			default: 0.00
 		},
-		access: {
+		percentage: {
 			type: Number,
 			default: 0
 		}
 	},
 	computed: {
-		tagClasses () {
+		badgeClasses () {
 			return [
-				this.$style.tag,
+				this.$style.badge,
 				this.$style[this.getStyle()]
 			]
 		},
 		arrow () {
-			if (this.access > 5) {
+			if (this.percentage > 5) {
 				return 'up'
 			}
 			return 'down'
+		},
+		badgeNumber () {
+			if (this.percentage < 0) {
+				return (this.percentage * (-1)).toFixed(2)
+			}
+			return this.percentage.toFixed(2)
 		}
 	},
 	methods: {
 		getStyle () {
-			if (this.access <= -10) {
+			if (this.percentage <= -10) {
 				return 'veryGood'
-			} else if (this.access <= 0) {
+			} else if (this.percentage <= 0) {
 				return 'good'
-			} else if (this.access > 0 && this.access <= 5) {
+			} else if (this.percentage > 0 && this.percentage <= 5) {
 				return 'caution'
-			} else if (this.access > 5 && this.access <= 10) {
+			} else if (this.percentage > 5 && this.percentage <= 10) {
 				return 'bad'
 			} else {
 				return 'veryBad'
@@ -82,7 +89,7 @@ export default {
 
 <style lang="scss" module>
 .box {
-	width: 215px;
+	width: 220px;
 	height: 325px;
 	border-radius: 6px;
 	border: 1px solid $gray-light;
@@ -90,8 +97,11 @@ export default {
 	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
 	position: relative;
 
-	[class*="Picture"] {
-		max-height: 150px;
+	.product {
+		&[class*="Picture"] {
+			max-height: 100px;
+			margin: 12px 26px 31px;
+		}
 	}
 
 	.title {
@@ -120,11 +130,11 @@ export default {
 		font-weight: 600;
 	}
 
-	.tag {
+	.badge {
 		position: absolute;
 		top: 10px;
 		left: 0;
-		width: 60px;
+		width: 70px;
 		height: 32px;
 		border-radius: 0 6px 6px 0;
 		font-size: $font-xxs;
@@ -138,7 +148,7 @@ export default {
 			background-color: $green-dark;
 		}
 		&.good {
-			background-color: $green-smooth
+			background-color: $green-smooth-dark
 		}
 		&.caution {
 			background-color: $yellow;

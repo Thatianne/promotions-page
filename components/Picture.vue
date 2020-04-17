@@ -14,10 +14,18 @@ export default {
 		extension: {
 			type: String,
 			default: 'png'
+		},
+		external: {
+			type: Boolean,
+			default: false
 		}
 	},
 	computed: {
 		source () {
+			if (this.external) {
+				return this.src
+			}
+
 			if (this.$device.isMobile) {
 				return `/img/${this.src}.${this.extension}`
 			} else if (this.$device.isTablet) {

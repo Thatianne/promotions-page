@@ -37,6 +37,7 @@ export default {
 			}
 
 			this.$refs.items.scroll(this.scroll, 0)
+			this.$emit('onNext')
 		}
 	}
 }

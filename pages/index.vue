@@ -13,7 +13,6 @@
 				:class="$style.appImage"
 				src="group-9" />
 		</div>
-
 		<div
 			class="f-between"
 			:class="[$style.section, $style.benefitsSection]"
@@ -103,11 +102,12 @@
 					{{ $t('see-all') }}
 				</a>
 			</div>
-			<Carousel>
+			<Carousel @onNext="loadProducts()">
 				<ProductAccess
-					v-for="(product, index) in mostAccessedProducts"
+					v-for="(product, index) in products"
 					:key="index"
 					v-bind="product"
+					:store="getStoreName(product.storeId)"
 				/>
 			</Carousel>
 		</div>
@@ -116,6 +116,9 @@
 </template>
 
 <script>
+import { list as listStores } from '~/api/stores'
+import { list as listProducts } from '~/api/products'
+
 import Picture from '~/components/Picture'
 import DownloadApp from '~/components/DownloadApp'
 import BenefitBox from '~/components/BenefitBox'
@@ -133,6 +136,17 @@ export default {
 		ProductAccess,
 		Carousel,
 		Footer
+	},
+	async asyncData () {
+		const idToStore = {}
+		const stores = await listStores()
+		stores.forEach((store) => { idToStore[store._id] = store })
+		const products = await listProducts({ limit: 6, offset: 0 })
+		return {
+			stores,
+			idToStore,
+			products
+		}
 	},
 	data () {
 		return {
@@ -154,50 +168,32 @@ export default {
 				'light	',
 				'warning'
 			],
-			mostAccessedProducts: [
-				{
-					picture: 'cadeira',
-					title: 'Cadeira para escritório',
-					seller: 'Magazine Luíza',
-					price: 650,
-					access: 12
-				},
-				{
-					picture: 'monitor',
-					title: 'Monitor DELL',
-					seller: 'Lojas Americanas',
-					price: 1.609,
-					access: 4
-				},
-				{
-					picture: 'monitor',
-					title: 'Monitor DELL',
-					seller: 'Lojas Americanas',
-					price: 1.609,
-					access: -5
-				},
-				{
-					picture: 'monitor',
-					title: 'Monitor DELL',
-					seller: 'Lojas Americanas',
-					price: 1.609,
-					access: 0
-				},
-				{
-					picture: 'monitor-lg',
-					title: 'Monitor LG',
-					seller: 'Magazine Luíza',
-					price: 1.525,
-					access: 6
-				},
-				{
-					picture: 'monitor-lg',
-					title: 'Monitor LG',
-					seller: 'Magazine Luíza',
-					price: 1.525,
-					access: 11
-				}
-			]
+			req: {
+				limit: 6,
+				offset: 0,
+				loaded: true,
+				allLoaded: false
+			}
+		}
+	},
+	methods: {
+		getStoreName (storeId) {
+			if (!storeId) {
+				return ''
+			} else {
+				const store = this.idToStore[storeId]
+				return store.name
+			}
+		},
+		async loadProducts () {
+			if (!this.req.allLoaded) {
+				this.loaded = false
+				this.req.offset += 6
+				const newProducts = await listProducts(this.req)
+				this.products = [...this.products, ...newProducts]
+				this.req.loaded = true
+				this.req.allLoaded = !newProducts.length
+			}
 		}
 	}
 }
