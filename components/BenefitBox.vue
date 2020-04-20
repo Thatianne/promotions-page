@@ -1,5 +1,7 @@
 <template>
-	<div :class="$style.box">
+	<div
+		class="BenefitBox"
+		:class="classes">
 		<Picture
 			:class="$style.image"
 			:src="src" />
@@ -16,6 +18,8 @@ const types = {
 	clock: 'alarm-clock-2',
 	bell: 'ic-notifications-none'
 }
+const sizes = { fixed: true, fill: true }
+
 export default {
 	components: {
 		Picture
@@ -32,6 +36,10 @@ export default {
 		type: {
 			type: String,
 			default: 'chart'
+		},
+		size: {
+			type: String,
+			default: 'fixed'
 		}
 	},
 	computed: {
@@ -41,6 +49,14 @@ export default {
 				src = types.chart
 			}
 			return src
+		},
+		classes () {
+			let size = 'fixed'
+
+			if (sizes[this.size]) {
+				size = this.size
+			}
+			return [this.$style.box, this.$style[size]]
 		}
 	}
 }
@@ -48,8 +64,6 @@ export default {
 
 <style lang="scss" module>
 .box {
-	width: 280px;
-	height: 250px;
 	background-color: $white;
 	border-radius: 6px;
 	padding: 54px 29px;
@@ -59,13 +73,27 @@ export default {
 	align-items: center;
 	box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
 
+	> * {
+		margin-bottom: 12px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&.fixed {
+		width: 280px;
+		height: 250px;
+		margin: 0 8px;
+	}
+
+	&.fill {
+		width: 100%;
+	}
+
 	p {
 		text-align: center;
 		font-size: $font-xs;
-	}
-	* {
-		margin: 0;
-		padding: 0;
 	}
 }
 

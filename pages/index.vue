@@ -1,5 +1,5 @@
 <template>
-	<div :class="$style.container">
+	<div :class="containerClasses">
 		<div
 			class="f-between"
 			:class="[$style.section, $style.appSection]"
@@ -7,7 +7,7 @@
 			<div>
 				<h1>{{ $t('page-title') }}</h1>
 				<p>{{ $t('app-description') }}</p>
-				<DownloadApp />
+				<DownloadApp :size="size.downloadApp" />
 			</div>
 			<Picture
 				:class="$style.appImage"
@@ -20,16 +20,19 @@
 			<BenefitBox
 				:title="$t('benefits-title')"
 				:description="$t('benefits-description')"
+				:size="size.benefit"
 			/>
 			<BenefitBox
 				:title="$t('benefits-title')"
 				:description="$t('benefits-description')"
 				type="clock"
+				:size="size.benefit"
 			/>
 			<BenefitBox
 				:title="$t('benefits-title')"
 				:description="$t('benefits-description')"
 				type="bell"
+				:size="size.benefit"
 			/>
 		</div>
 
@@ -150,7 +153,7 @@ export default {
 	},
 	data () {
 		return {
-			corporates: [
+			baseCorporates: [
 				'primary',
 				'light',
 				'light',
@@ -174,6 +177,26 @@ export default {
 				loaded: true,
 				allLoaded: false
 			}
+		}
+	},
+	computed: {
+		device () {
+			return this.$getDevice(this.$mq, this.$device)
+		},
+		containerClasses () {
+			return [this.$style.container, this.$style[this.device]]
+		},
+		size () {
+			return {
+				downloadApp: this.device === 'mobile' ? 'lg' : 'lg',
+				benefit: this.device === 'mobile' ? 'fill' : 'fixed'
+			}
+		},
+		corporates () {
+			if (this.device === 'mobile') {
+				return this.baseCorporates.filter((corporation, index) => (index + 1) % 4 !== 0 && index < 12)
+			}
+			return this.baseCorporates
 		}
 	},
 	methods: {
@@ -208,8 +231,6 @@ export default {
 	padding: 80px;
 
 	&.appSection {
-		// padding-top: 48px;
-
 		h1 {
 			font-size: $font-xxl;
 		}
@@ -271,14 +292,9 @@ export default {
 		}
 
 		.corporationsLogo {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			width: 436px;
-
-			[class*="CorporationLogo"] {
-					margin: 12px;
-				}
+			display: grid;
+			grid-template-columns: 85px 85px 85px 85px;
+			grid-gap: 12px;
 		}
 	}
 
@@ -301,8 +317,105 @@ export default {
 			}
 		}
 	}
+
+	.appImage {
+		max-width: 370px;
+	}
 }
-.appImage {
-	max-width: 370px;
+
+.tablet {
+	.section {
+		padding: 40px;
+	}
+
+	.appSection {
+		padding: 120px 40px 60px;
+	}
+	.appImage {
+		max-width: 270px;
+	}
+}
+
+.mobile {
+	h1 {
+		font-size: $font-lg;
+	}
+
+	h2 {
+		font-size: $font-lg;
+	}
+
+	.section {
+		padding: 20px;
+	}
+
+	.appSection {
+		flex-wrap: wrap;
+		padding: 120px 20px;
+
+		h1 {
+			font-size: $font-lg;
+		}
+
+		[class*="DownloadApp"] {
+			margin: 18px 0 22px;
+			width: 100%;
+		}
+
+		.appImage {
+			max-width: 90%;
+			margin: 0 auto;
+		}
+	}
+
+	.benefitsSection {
+		flex-direction: column;
+		padding: 30px 10px;
+
+		[class*="BenefitBox"] {
+			margin-top: 18px;
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.videoSection {
+		padding: 96px 20px;
+	}
+
+	.spotlightSection {
+		.sectionBody {
+			flex-direction: column-reverse;
+		}
+
+		.corporationsLogo {
+			grid-template-columns: 85px 85px 85px;
+		}
+
+		.corporations {
+			margin-top: 20px;
+
+			.corporation {
+				display: flex;
+				flex-direction: column;
+				padding: 8px 0 12px;
+				span, p {
+					text-align: center;
+				}
+			}
+		}
+	}
+
+	.mostAccessedSection {
+		.seeAll {
+			margin: 0 0 0 6px;
+		}
+	}
+}
+
+.mobile, .tablet {
+
 }
 </style>

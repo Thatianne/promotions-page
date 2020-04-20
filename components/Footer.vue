@@ -1,10 +1,13 @@
 <template>
-	<footer :class="$style.footer">
+	<footer :class="classes">
 		<div
 			class="f-between"
 			:class="$style.install"
 		>
-			<div :class="$style.extension">
+			<div
+				v-if="device !== 'mobile'"
+				:class="$style.extension"
+			>
 				<Picture src="chrome" />
 				<div>
 					<span :class="$style.darkBold">{{ $t('install-extension-title') }}</span>
@@ -17,7 +20,7 @@
 				<p>
 					<strong :class="$style.darkBold">{{ $t('download-app-first') }}</strong> {{ $t('download-app-second') }}
 				</p>
-				<DownloadApp size="md" />
+				<DownloadApp :size="size.app" />
 			</div>
 		</div>
 		<div
@@ -105,6 +108,19 @@ export default {
 				}
 			]
 		}
+	},
+	computed: {
+		device () {
+			return this.$getDevice(this.$mq, this.$device)
+		},
+		classes () {
+			return [this.$style.footer, this.$style[this.device]]
+		},
+		size () {
+			return {
+				app: this.device === 'mobile' ? 'lg' : 'md'
+			}
+		}
 	}
 }
 </script>
@@ -113,9 +129,8 @@ export default {
 .footer {
 
 	.install {
-		height: 80px;
 		background-color: $green-smooth-light;
-		padding: 6px 80px;
+		padding: 22px 80px;
 
 		.extension {
 			display: flex;
@@ -149,7 +164,6 @@ export default {
 	}
 
 	.info {
-		height: 235px;
 		background-color: $green;
 		padding: 28px 80px 12px;
 
@@ -189,6 +203,7 @@ export default {
 		font-size: 11px;
 		color: $white;
 		line-height: 16px;
+		margin-top: 12px;
 
 		strong {
 			color: $white;
@@ -204,6 +219,51 @@ export default {
 		font-size: $font-xs;
 		color: $white;
 		font-weight: 500;
+	}
+
+	&.mobile {
+		.install {
+			padding: 20px;
+		}
+
+		.app {
+			flex-direction: column;
+
+			[class*="DownloadApp"] {
+				margin-top: 12px;
+				width: 100%;
+			}
+
+			p, strong {
+				width: auto;
+				font-size: $font-sm;
+			}
+		}
+
+		.info {
+			padding: 20px;
+
+			> div {
+				flex-direction: column;
+				align-items: flex-start;
+			}
+
+			section {
+				margin-bottom: 22px;
+			}
+
+			.link {
+				font-size: $font-xs;
+			}
+		}
+
+		.whiteBold {
+			font-size: $font-sm;
+		}
+
+		.stores {
+			font-size: $font-xs;
+		}
 	}
 }
 </style>

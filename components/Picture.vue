@@ -26,9 +26,10 @@ export default {
 				return this.src
 			}
 
-			if (this.$device.isMobile) {
+			const device = this.$deviceIs(this.$mq, this.$device)
+			if (device.isMobile) {
 				return `/img/${this.src}.${this.extension}`
-			} else if (this.$device.isTablet) {
+			} else if (device.isTablet) {
 				return `/img/${this.src}@2x.${this.extension}`
 			} else {
 				return `/img/${this.src}@3x.${this.extension}`

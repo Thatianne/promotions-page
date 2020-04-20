@@ -27,6 +27,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
 	plugins: [
+		'~/plugins/media-query.js',
 		'~/plugins/i18n.js',
 		'~/plugins/axios.js',
 		'~/plugins/filters.js'
@@ -51,11 +52,9 @@ module.exports = {
 			families: ['Roboto:400,500,600']
 		}
 	},
-
 	styleResources: {
 		scss: [
-			'assets/scss/_vars.scss',
-			'assets/scss/_base.scss'
+			'assets/scss/_vars.scss'
 		]
 	},
 	/*
