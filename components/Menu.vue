@@ -44,8 +44,7 @@ export default {
 	},
 	computed: {
 		classes () {
-			const device = this.$getDevice(this.$mq, this.$device)
-			return [this.$style.menu, this.$style[device]]
+			return [this.$style.menu, this.$style[this.$mq]]
 		}
 	},
 	methods: {

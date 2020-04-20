@@ -2,15 +2,18 @@
 	<div :class="$style.app">
 		<Menu />
 		<nuxt />
+		<Footer />
 	</div>
 </template>
 
 <script>
 import Menu from '~/components/Menu'
+import Footer from '~/components/Footer'
 
 export default {
 	components: {
-		Menu
+		Menu,
+		Footer
 	}
 }
 </script>

@@ -114,7 +114,6 @@
 				/>
 			</Carousel>
 		</div>
-		<Footer />
 	</div>
 </template>
 
@@ -128,7 +127,6 @@ import BenefitBox from '~/components/BenefitBox'
 import CorporateLogo from '~/components/CorporateLogo'
 import ProductAccess from '~/components/ProductAccess'
 import Carousel from '~/components/Carousel'
-import Footer from '~/components/Footer'
 
 export default {
 	components: {
@@ -137,14 +135,13 @@ export default {
 		BenefitBox,
 		CorporateLogo,
 		ProductAccess,
-		Carousel,
-		Footer
+		Carousel
 	},
 	async asyncData () {
 		const idToStore = {}
 		const stores = await listStores()
 		stores.forEach((store) => { idToStore[store._id] = store })
-		const products = await listProducts({ limit: 6, offset: 0 })
+		const products = await listProducts({ limit: 10, offset: 0 })
 		return {
 			stores,
 			idToStore,
@@ -180,20 +177,17 @@ export default {
 		}
 	},
 	computed: {
-		device () {
-			return this.$getDevice(this.$mq, this.$device)
-		},
 		containerClasses () {
-			return [this.$style.container, this.$style[this.device]]
+			return [this.$style.container, this.$style[this.$mq]]
 		},
 		size () {
 			return {
-				downloadApp: this.device === 'mobile' ? 'lg' : 'lg',
-				benefit: this.device === 'mobile' ? 'fill' : 'fixed'
+				downloadApp: this.$mq === 'mobile' ? 'lg' : 'lg',
+				benefit: this.$mq === 'mobile' ? 'fill' : 'fixed'
 			}
 		},
 		corporates () {
-			if (this.device === 'mobile') {
+			if (this.$mq === 'mobile') {
 				return this.baseCorporates.filter((corporation, index) => (index + 1) % 4 !== 0 && index < 12)
 			}
 			return this.baseCorporates
@@ -211,7 +205,7 @@ export default {
 		async loadProducts () {
 			if (!this.req.allLoaded) {
 				this.loaded = false
-				this.req.offset += 6
+				this.req.offset += 10
 				const newProducts = await listProducts(this.req)
 				this.products = [...this.products, ...newProducts]
 				this.req.loaded = true
@@ -351,14 +345,15 @@ export default {
 
 	.appSection {
 		flex-wrap: wrap;
-		padding: 120px 20px;
+		padding: 40px 20px;
 
 		h1 {
 			font-size: $font-lg;
+			margin-top: 22px;
 		}
 
 		[class*="DownloadApp"] {
-			margin: 18px 0 22px;
+			margin: 18px 0 0 0;
 			width: 100%;
 		}
 
@@ -366,11 +361,19 @@ export default {
 			max-width: 90%;
 			margin: 0 auto;
 		}
+
+		&:first-child {
+			padding: 108px 20px;
+
+			[class*="DownloadApp"] {
+			margin: 18px 0 22px;
+		}
+		}
 	}
 
 	.benefitsSection {
 		flex-direction: column;
-		padding: 30px 10px;
+		padding: 30px 20px;
 
 		[class*="BenefitBox"] {
 			margin-top: 18px;

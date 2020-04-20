@@ -17,6 +17,7 @@ body {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 .f-col-between {
@@ -24,6 +25,7 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 .f-col-center {

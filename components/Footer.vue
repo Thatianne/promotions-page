@@ -5,7 +5,7 @@
 			:class="$style.install"
 		>
 			<div
-				v-if="device !== 'mobile'"
+				v-if="$mq !== 'mobile'"
 				:class="$style.extension"
 			>
 				<Picture src="chrome" />
@@ -110,15 +110,12 @@ export default {
 		}
 	},
 	computed: {
-		device () {
-			return this.$getDevice(this.$mq, this.$device)
-		},
 		classes () {
-			return [this.$style.footer, this.$style[this.device]]
+			return [this.$style.footer, this.$style[this.$mq]]
 		},
 		size () {
 			return {
-				app: this.device === 'mobile' ? 'lg' : 'md'
+				app: this.$mq === 'mobile' ? 'lg' : 'md'
 			}
 		}
 	}
@@ -150,7 +147,8 @@ export default {
 		}
 
 		.app {
-			width: 400px;
+			width: 455px;
+			margin: 6px 0;
 
 			p {
 				width: 210px;

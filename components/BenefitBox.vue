@@ -84,7 +84,7 @@ export default {
 	&.fixed {
 		width: 280px;
 		height: 250px;
-		margin: 0 8px;
+		margin: 8px;
 	}
 
 	&.fill {
