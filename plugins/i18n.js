@@ -5,12 +5,12 @@ Vue.use(VueI18n)
 
 export default ({ app, store }) => {
 	app.i18n = new VueI18n({
-		locale: 'pt_br', // store.state.locale
+		locale: store.state.app.locale,
 		fallbackLocale: 'en',
 		messages: {
-			pt_br: require('~/static/i18n/pt_br.json'),
-			en: require('~/static/i18n/en.json'),
-			es: require('~/static/i18n/es.json')
+			pt_br: require('~/assets/i18n/pt_br.json'),
+			en: require('~/assets/i18n/en.json'),
+			es: require('~/assets/i18n/es.json')
 		}
 	})
 }

@@ -184,7 +184,7 @@ export default {
 		}
 
 		section {
-			height: 100%;
+			height: 119px;
 		}
 
 		.socialLogos {

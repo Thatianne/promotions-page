@@ -5,11 +5,11 @@ module.exports = {
   ** Headers of the page
   */
 	head: {
-		title: process.env.npm_package_name || '',
+		title: 'Landingpage',
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+			{ hid: 'description', name: 'description', content: process.env.npm_package_name || '' }
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -43,7 +43,6 @@ module.exports = {
   ** Nuxt.js modules
   */
 	modules: [
-		'@nuxtjs/device',
 		'@nuxtjs/style-resources',
 		'nuxt-webfontloader'
 	],

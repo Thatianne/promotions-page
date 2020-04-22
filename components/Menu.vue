@@ -18,11 +18,11 @@
 					v-if="$mq !== 'mobile'"
 					:class="$style.links"
 				>
-					<nuxt-link to="/login">
+					<nuxt-link to="/#">
 						{{ $t('login') }}
 					</nuxt-link>
 					<nuxt-link
-						to="/sign-in"
+						to="/#"
 						:class="$style.leftBorder">
 						{{ $t('create-account') }}
 					</nuxt-link>

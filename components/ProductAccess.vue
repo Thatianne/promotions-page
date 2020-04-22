@@ -5,7 +5,7 @@
 	>
 		<div :class="badgeClasses">
 			<Picture :src="arrow" />
-			<span>$ {{ badgeNumber }}</span>
+			<span>{{ badgeNumber | currency('en') }}</span>
 		</div>
 		<Picture
 			:src="image"
@@ -16,11 +16,13 @@
 			{{ title | truncate(55) }}
 		</h3>
 		<span :class="$style.description">{{ $t('sold-by') }} <a>{{ store }}</a></span>
-		<span :class="$style.price">R$ {{ price.toFixed(2) }}</span>
+		<span :class="$style.price">{{ price | currency(locale) }}</span>
 	</div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import Picture from '~/components/Picture'
 
 export default {
@@ -67,7 +69,10 @@ export default {
 				return (this.percentage * (-1)).toFixed(2)
 			}
 			return this.percentage.toFixed(2)
-		}
+		},
+		...mapState({
+			locale: state => state.app.locale
+		})
 	},
 	methods: {
 		getStyle () {
