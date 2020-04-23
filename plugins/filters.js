@@ -14,7 +14,7 @@ export function currency (number, value) {
 		locale = value
 		currency = 'EUR'
 	}
-	return (parseInt(number)).toLocaleString(locale, {
+	return (parseFloat(number)).toLocaleString(locale, {
 		style: 'currency',
 		currency,
 		minimumFractionDigits: 2,
